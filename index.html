@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="theme-color" content="#050510"/>
+<meta name="description" content="Download TikTok videos in HD without watermark — free, fast, private."/>
+<title>TikSabt — Download TikTok Videos Free</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050510;
+  --l1:#0b0b1a;
+  --l2:#10101e;
+  --l3:#16162a;
+  --bd:rgba(255,255,255,.05);
+  --bd2:rgba(255,255,255,.09);
+  --text:#eeeef8;
+  --mu:#55557a;
+  --mu2:#8888b0;
+  --p1:#7c3aed;
+  --p2:#6025c9;
+  --a1:#06b6d4;
+  --a2:#0ea5e9;
+  --grad:linear-gradient(135deg,#7c3aed 0%,#06b6d4 100%);
+  --grad2:linear-gradient(135deg,#6025c9 0%,#0891b2 100%)
+}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── Ambient glow ── */
+body::before{
+  content:"";position:fixed;width:900px;height:500px;
+  background:radial-gradient(ellipse at 30% 50%,rgba(124,58,237,.1) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 50%,rgba(6,182,212,.08) 0%,transparent 60%);
+  top:-100px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0
+}
+.wrap{position:relative;z-index:1}
+
+/* ── Header ── */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 32px;
+  background:rgba(5,5,16,.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--bd);
+  position:sticky;top:0;z-index:99
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-ic{
+  width:32px;height:32px;border-radius:9px;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+  box-shadow:0 0 20px rgba(124,58,237,.35)
+}
+.logo-nm{font-size:16px;font-weight:800;letter-spacing:-.4px}
+.logo-nm span{
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.hdr-right{display:flex;align-items:center;gap:8px}
+.hdr-badge{
+  padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;
+  background:rgba(124,58,237,.12);
+  border:1px solid rgba(124,58,237,.25);
+  color:#a78bfa
+}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:72px 20px 52px;max-width:700px;margin:0 auto}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:20px;
+  background:rgba(124,58,237,.08);
+  border:1px solid rgba(124,58,237,.18);
+  font-size:11px;font-weight:600;color:#a78bfa;
+  letter-spacing:.8px;text-transform:uppercase;
+  margin-bottom:24px
+}
+.hero-eyebrow span{width:4px;height:4px;border-radius:50%;background:#7c3aed}
+h1{
+  font-size:48px;font-weight:800;line-height:1.1;
+  letter-spacing:-1.5px;margin-bottom:16px
+}
+.h1-line2{
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block
+}
+.hero-sub{
+  font-size:15px;color:var(--mu2);line-height:1.75;
+  max-width:420px;margin:0 auto 44px
+}
+
+/* ── Input ── */
+.icard{
+  max-width:580px;margin:0 auto;
+  background:var(--l2);
+  border:1px solid var(--bd2);
+  border-radius:18px;padding:6px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(124,58,237,.06);
+  transition:box-shadow .3s
+}
+.icard:focus-within{
+  box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(124,58,237,.3);
+}
+.irow{
+  display:flex;align-items:center;
+  background:var(--l3);border-radius:12px;
+  border:1px solid var(--bd)
+}
+.ipfx{padding:0 14px;font-size:17px;flex-shrink:0;opacity:.5}
+.ifield{
+  flex:1;background:transparent;border:none;outline:none;
+  padding:15px 0;font-size:14px;font-family:"Inter",sans-serif;color:var(--text)
+}
+.ifield::placeholder{color:var(--mu)}
+.clr{
+  background:none;border:none;color:var(--mu);cursor:pointer;
+  padding:8px 12px;font-size:14px;display:none;outline:none;
+  transition:color .2s
+}
+.clr:hover{color:var(--text)}
+.clr.on{display:block}
+.go-btn{
+  margin:4px;padding:14px 28px;border-radius:12px;border:none;
+  background:var(--grad);color:#fff;
+  font-family:"Inter",sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;
+  box-shadow:0 4px 20px rgba(124,58,237,.4);
+  -webkit-tap-highlight-color:transparent;outline:none;
+  transition:opacity .15s,box-shadow .2s
+}
+.go-btn:hover{opacity:.92;box-shadow:0 6px 28px rgba(124,58,237,.55)}
+.go-btn:active{opacity:.78}
+.go-btn:disabled{opacity:.45;cursor:not-allowed}
+.hint-row{
+  max-width:580px;margin:12px auto 0;text-align:center;
+  font-size:11px;color:var(--mu);
+  display:flex;justify-content:center;gap:20px;flex-wrap:wrap
+}
+#result{max-width:580px;margin:20px auto 0}
+
+/* ── Loading ── */
+.loading-card{
+  background:var(--l2);border:1px solid var(--bd);
+  border-radius:16px;padding:44px 20px;text-align:center
+}
+.spin{
+  width:36px;height:36px;border-radius:50%;
+  border:2.5px solid var(--bd2);
+  border-top-color:var(--p1);
+  animation:rot .75s linear infinite;
+  margin:0 auto 16px
+}
+@keyframes rot{to{transform:rotate(360deg)}}
+.ld-t{font-size:15px;font-weight:600;margin-bottom:6px}
+.ld-s{font-size:12px;color:var(--mu2)}
+
+/* ── Error ── */
+.err-card{
+  background:var(--l2);border:1px solid rgba(239,68,68,.15);
+  border-radius:16px;padding:36px 22px;text-align:center
+}
+.err-ic{font-size:32px;margin-bottom:10px}
+.err-t{font-size:16px;font-weight:700;color:#f87171;margin-bottom:8px}
+.err-m{color:var(--mu2);font-size:13px;line-height:1.75;margin:0 auto 18px;text-align:center}
+.retry-btn{
+  display:inline-block;padding:10px 24px;border-radius:10px;
+  border:1px solid rgba(124,58,237,.35);
+  background:rgba(124,58,237,.08);
+  color:#a78bfa;font-family:"Inter",sans-serif;
+  font-size:13px;font-weight:600;cursor:pointer;transition:background .2s
+}
+.retry-btn:hover{background:rgba(124,58,237,.18)}
+
+/* ── Result card ── */
+.res-card{
+  background:var(--l2);border:1px solid var(--bd2);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,.45);
+  animation:upF .4s cubic-bezier(.16,1,.3,1) both
+}
+@keyframes upF{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.thumb-w{position:relative;max-height:260px;overflow:hidden;background:var(--l3)}
+.thumb{width:100%;display:block;object-fit:cover;max-height:260px}
+.thumb-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,rgba(16,16,30,.97) 100%)}
+.ptag{
+  position:absolute;top:14px;left:14px;
+  padding:4px 11px;border-radius:14px;font-size:10px;font-weight:700;
+  backdrop-filter:blur(10px);
+  background:rgba(124,58,237,.25);
+  border:1px solid rgba(124,58,237,.4);color:#c4b5fd
+}
+.res-body{padding:20px 22px 24px}
+.res-up{font-size:11px;color:var(--mu2);margin-bottom:5px}
+.res-title{font-size:14px;font-weight:600;line-height:1.45;margin-bottom:20px}
+.fmt-lbl{
+  font-size:10px;font-weight:700;color:var(--mu);
+  text-transform:uppercase;letter-spacing:1.8px;margin-bottom:10px
+}
+.fmts{display:flex;flex-direction:column;gap:8px}
+.fmt-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:14px 18px;border-radius:12px;
+  border:1px solid var(--bd2);background:var(--l3);
+  color:var(--text);font-family:"Inter",sans-serif;
+  font-size:13px;font-weight:600;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;outline:none;
+  transition:all .2s
+}
+.fmt-btn:hover{
+  background:rgba(124,58,237,.1);
+  border-color:rgba(124,58,237,.35);color:#c4b5fd
+}
+.fmt-btn:active{opacity:.7}
+.fmt-left{display:flex;align-items:center;gap:13px}
+.fmt-ic{
+  width:34px;height:34px;border-radius:10px;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;color:#fff
+}
+.fmt-quality{font-size:13px;font-weight:700}
+.fmt-meta{font-size:11px;color:var(--mu2);margin-top:2px}
+.best-tag{
+  font-size:9px;padding:2px 8px;border-radius:5px;font-weight:700;
+  background:var(--grad);color:#fff;
+  box-shadow:0 2px 8px rgba(124,58,237,.35)
+}
+.dl-status{
+  margin-top:12px;padding:10px 14px;border-radius:10px;
+  font-size:12px;text-align:center;display:none
+}
+.dl-status.show{display:block}
+.dl-status.ok{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.2);color:rgba(103,232,249,.9)}
+.dl-status.warn{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);color:rgba(252,211,77,.9)}
+
+/* ── Trust bar ── */
+.trust{
+  max-width:580px;margin:48px auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--bd);
+  border:1px solid var(--bd);border-radius:14px;overflow:hidden
+}
+.trust-item{background:var(--l1);padding:18px 10px;text-align:center}
+.trust-n{
+  font-size:20px;font-weight:800;margin-bottom:4px;
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.trust-l{font-size:10px;color:var(--mu);font-weight:500;letter-spacing:.3px}
+
+/* ── Features ── */
+.sec{max-width:680px;margin:80px auto 0;padding:0 20px}
+.sec-hd{text-align:center;margin-bottom:32px}
+.sec-eye{
+  font-size:10px;text-transform:uppercase;letter-spacing:3px;
+  color:var(--p1);margin-bottom:8px;font-weight:600
+}
+.sec-title{font-size:26px;font-weight:800;letter-spacing:-.5px}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.feat-card{
+  background:var(--l2);border:1px solid var(--bd);
+  border-radius:14px;padding:22px 20px;
+  transition:all .25s;position:relative;overflow:hidden
+}
+.feat-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--grad);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s
+}
+.feat-card:hover::before{transform:scaleX(1)}
+.feat-card:hover{border-color:rgba(124,58,237,.2);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.feat-ic{font-size:24px;margin-bottom:12px}
+.feat-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feat-card p{font-size:12px;color:var(--mu2);line-height:1.65}
+
+/* ── Steps ── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
+.step{
+  background:var(--l2);border:1px solid var(--bd);
+  border-radius:14px;padding:20px 18px;
+  transition:transform .2s
+}
+.step:hover{transform:translateY(-3px)}
+.step-n{
+  font-size:36px;font-weight:800;line-height:1;margin-bottom:10px;
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  opacity:.25
+}
+.step h3{font-size:13px;font-weight:700;margin-bottom:5px}
+.step p{font-size:12px;color:var(--mu2);line-height:1.6}
+
+/* ── FAQ ── */
+.faqs{display:flex;flex-direction:column;gap:6px}
+.fi{
+  background:var(--l2);border:1px solid var(--bd);
+  border-radius:12px;overflow:hidden;
+  transition:border-color .2s
+}
+.fi:hover{border-color:rgba(124,58,237,.2)}
+.fq{
+  width:100%;padding:15px 18px;background:none;border:none;
+  color:var(--text);font-family:"Inter",sans-serif;
+  font-size:13px;font-weight:600;cursor:pointer;
+  text-align:left;display:flex;justify-content:space-between;
+  align-items:center;gap:12px;transition:color .2s;outline:none
+}
+.fq:hover{color:#a78bfa}
+.fchev{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--l3);border:1px solid var(--bd2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--mu);
+  transition:transform .25s,background .2s;flex-shrink:0
+}
+.fi.open .fchev{transform:rotate(180deg);background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.3);color:#a78bfa}
+.fa{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.fi.open .fa{max-height:200px}
+.fa-in{padding:0 18px 15px;font-size:13px;color:var(--mu2);line-height:1.75}
+
+/* ── Footer ── */
+footer{
+  margin-top:80px;background:var(--l1);
+  border-top:1px solid var(--bd);padding:48px 20px 0
+}
+.ft-grid{
+  max-width:680px;margin:0 auto;
+  display:grid;grid-template-columns:2.2fr 1fr 1fr;
+  gap:40px;margin-bottom:40px
+}
+.ft-brand{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.ft-brand-ic{
+  width:26px;height:26px;border-radius:8px;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;font-size:13px
+}
+.ft-brand-nm{font-size:15px;font-weight:800;letter-spacing:-.3px}
+.ft-desc{font-size:12px;color:var(--mu2);line-height:1.7;max-width:220px}
+.ft-col h4{
+  font-size:10px;font-weight:700;color:var(--mu);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:14px
+}
+.ft-col a{
+  display:block;font-size:12px;color:var(--mu2);
+  text-decoration:none;margin-bottom:10px;
+  transition:color .2s;cursor:pointer
+}
+.ft-col a:hover{color:var(--text)}
+.ft-divider{max-width:680px;margin:0 auto;height:1px;background:var(--bd)}
+.ft-bottom{
+  max-width:680px;margin:0 auto;
+  padding:20px 0 28px;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px
+}
+.ft-copy{font-size:11px;color:var(--mu)}
+.ft-legal{display:flex;gap:20px;flex-wrap:wrap}
+.ft-legal a{
+  font-size:11px;color:var(--mu);
+  text-decoration:none;transition:color .2s;cursor:pointer
+}
+.ft-legal a:hover{color:var(--text)}
+
+/* ── Contact Modal ── */
+.modal-bg{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.75);z-index:999;
+  backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:16px
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:var(--l2);border:1px solid var(--bd2);
+  border-radius:20px;width:100%;max-width:440px;
+  padding:32px 28px 26px;position:relative;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  animation:modalIn .3s cubic-bezier(.16,1,.3,1)
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.modal-close{
+  position:absolute;top:16px;right:18px;
+  background:var(--l3);border:1px solid var(--bd2);
+  color:var(--mu);font-size:14px;cursor:pointer;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s
+}
+.modal-close:hover{color:var(--text);border-color:rgba(124,58,237,.3)}
+.modal-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:14px
+}
+.modal h3{font-size:18px;font-weight:800;margin-bottom:4px}
+.modal-sub{font-size:13px;color:var(--mu2);margin-bottom:24px;line-height:1.6}
+.form-row{margin-bottom:16px}
+.form-row label{
+  display:block;font-size:11px;font-weight:600;
+  color:var(--mu2);margin-bottom:7px;
+  text-transform:uppercase;letter-spacing:.8px
+}
+.form-row input,.form-row textarea{
+  width:100%;background:var(--l3);
+  border:1px solid var(--bd2);border-radius:10px;
+  padding:12px 14px;font-size:13px;
+  font-family:"Inter",sans-serif;color:var(--text);
+  outline:none;transition:border-color .2s;resize:none
+}
+.form-row input:focus,.form-row textarea:focus{border-color:rgba(124,58,237,.45)}
+.form-row textarea{height:108px}
+.send-btn{
+  width:100%;padding:14px;border-radius:12px;border:none;
+  background:var(--grad);color:#fff;
+  font-family:"Inter",sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;box-shadow:0 4px 20px rgba(124,58,237,.35);
+  transition:opacity .15s;margin-top:4px
+}
+.send-btn:hover{opacity:.9}
+.send-btn:disabled{opacity:.5;cursor:not-allowed}
+.form-msg{
+  margin-top:12px;padding:10px 14px;border-radius:10px;
+  font-size:12px;text-align:center;display:none
+}
+.form-msg.ok{display:block;background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.2);color:rgba(103,232,249,.9)}
+.form-msg.err{display:block;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);color:rgba(252,165,165,.9)}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  header{padding:12px 16px}
+  h1{font-size:32px;letter-spacing:-1px}
+  .hero{padding:48px 16px 36px}
+  .icard{border-radius:14px}
+  .irow{flex-direction:column;align-items:stretch;border-radius:10px}
+  .ipfx{display:none}
+  .ifield{padding:14px 16px;font-size:15px}
+  .go-btn{margin:4px;justify-content:center;border-radius:10px}
+  .trust{grid-template-columns:repeat(2,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .ft-bottom{justify-content:center;text-align:center}
+  .modal{padding:24px 18px 20px}
+}
+@media(max-width:400px){
+  h1{font-size:27px}
+  .features{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .hdr-badge{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ── Header ── -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-ic">🎵</div>
+    <div class="logo-nm">Tik<span>Sabt</span></div>
+  </a>
+  <div class="hdr-right">
+    <div class="hdr-badge">HD · Free · No Watermark</div>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span></span> No signup required &nbsp;·&nbsp; 100% free <span></span>
+  </div>
+  <h1>Download TikTok videos<span class="h1-line2">without watermark.</span></h1>
+  <p class="hero-sub">Paste any TikTok link below and save it to your device in HD quality — fast, private, and completely free.</p>
+
+  <div class="icard">
+    <div class="irow">
+      <div class="ipfx">🔗</div>
+      <input class="ifield" id="urlInput" type="url"
+             placeholder="Paste TikTok link here…"
+             autocomplete="off" spellcheck="false"
+             autocorrect="off" autocapitalize="off"/>
+      <button class="clr" id="clrBtn" onclick="doClear()">✕</button>
+    </div>
+    <button class="go-btn" id="goBtn" onclick="doFetch()">↓ Download Free</button>
+  </div>
+
+  <div class="hint-row">
+    <span>🔒 No data stored</span>
+    <span>✨ No watermark</span>
+    <span>⚡ Under 5 seconds</span>
+    <span>📱 Works on all devices</span>
+  </div>
+
+  <div id="result"></div>
+
+  <div class="trust">
+    <div class="trust-item"><div class="trust-n">HD</div><div class="trust-l">Quality</div></div>
+    <div class="trust-item"><div class="trust-n">0ms</div><div class="trust-l">Data Stored</div></div>
+    <div class="trust-item"><div class="trust-n">Free</div><div class="trust-l">Always</div></div>
+    <div class="trust-item"><div class="trust-n">Fast</div><div class="trust-l">Under 5s</div></div>
+  </div>
+</section>
+
+<!-- ── Features ── -->
+<section class="sec">
+  <div class="sec-hd">
+    <div class="sec-eye">Why TikSabt</div>
+    <h2 class="sec-title">Everything you need</h2>
+  </div>
+  <div class="features">
+    <div class="feat-card"><div class="feat-ic">🚫</div><h3>No Watermark</h3><p>Download original videos without the TikTok logo stamped on them.</p></div>
+    <div class="feat-card"><div class="feat-ic">📺</div><h3>HD 1080p</h3><p>Always fetches the highest available resolution — crystal clear quality.</p></div>
+    <div class="feat-card"><div class="feat-ic">🎵</div><h3>Audio Only</h3><p>Extract just the audio track as an MP3 — perfect for music.</p></div>
+    <div class="feat-card"><div class="feat-ic">⚡</div><h3>Lightning Fast</h3><p>Download links ready in under 5 seconds on any connection.</p></div>
+    <div class="feat-card"><div class="feat-ic">🔒</div><h3>100% Private</h3><p>We never store, log, or share your URLs, data, or identity.</p></div>
+    <div class="feat-card"><div class="feat-ic">📱</div><h3>All Devices</h3><p>Works perfectly on iPhone, Android, tablet, and desktop.</p></div>
+  </div>
+</section>
+
+<!-- ── How it works ── -->
+<section class="sec" style="margin-top:64px">
+  <div class="sec-hd">
+    <div class="sec-eye">Simple 4 steps</div>
+    <h2 class="sec-title">How it works</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-n">01</div><h3>Open TikTok</h3><p>Find any public video you want to save.</p></div>
+    <div class="step"><div class="step-n">02</div><h3>Copy link</h3><p>Tap Share → Copy Link on the video.</p></div>
+    <div class="step"><div class="step-n">03</div><h3>Paste here</h3><p>Paste the link into the box above.</p></div>
+    <div class="step"><div class="step-n">04</div><h3>Save it</h3><p>Choose HD, SD or Audio and it saves instantly.</p></div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec" style="margin-top:64px;margin-bottom:0">
+  <div class="sec-hd">
+    <div class="sec-eye">FAQ</div>
+    <h2 class="sec-title">Common questions</h2>
+  </div>
+  <div class="faqs">
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Is TikSabt completely free? <span class="fchev">▾</span></button>
+      <div class="fa"><div class="fa-in">Yes — 100% free forever. No account, no subscription, no hidden fees of any kind.</div></div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Does it really remove the TikTok watermark? <span class="fchev">▾</span></button>
+      <div class="fa"><div class="fa-in">Yes. We fetch the original source file directly from TikTok's servers, which does not have the watermark overlay.</div></div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">What quality options are available? <span class="fchev">▾</span></button>
+      <div class="fa"><div class="fa-in">HD 1080p without watermark, SD 720p without watermark, the original version with watermark, and an audio-only MP3 option.</div></div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Is it safe to use? <span class="fchev">▾</span></button>
+      <div class="fa"><div class="fa-in">Completely safe. We do not store URLs, we do not track users, and videos are never saved on our servers at any point.</div></div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Does it work on iPhone and Android? <span class="fchev">▾</span></button>
+      <div class="fa"><div class="fa-in">Yes, fully. On iPhone use Safari — tap the download button and then hold the video to Save. On Android it downloads directly to your Downloads folder.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact Modal ── -->
+<div class="modal-bg" id="contactModal" onclick="closeModalBg(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeContact()">✕</button>
+    <div class="modal-icon">✉️</div>
+    <h3>Get in touch</h3>
+    <p class="modal-sub">Have a question or need help? Send us a message and we'll reply within 24 hours.</p>
+    <div class="form-row">
+      <label>Your Name</label>
+      <input type="text" id="cName" placeholder="John Smith" maxlength="80" autocomplete="name"/>
+    </div>
+    <div class="form-row">
+      <label>Your Email</label>
+      <input type="email" id="cEmail" placeholder="you@example.com" maxlength="120" autocomplete="email"/>
+    </div>
+    <div class="form-row">
+      <label>Message</label>
+      <textarea id="cMsg" placeholder="How can we help you?" maxlength="1000"></textarea>
+    </div>
+    <button class="send-btn" id="sendBtn" onclick="sendContact()">Send Message →</button>
+    <div class="form-msg" id="formMsg"></div>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">
+        <div class="ft-brand-ic">🎵</div>
+        <div class="ft-brand-nm">TikSabt</div>
+      </div>
+      <p class="ft-desc">The fastest free way to download TikTok videos in HD quality without a watermark.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Product</h4>
+      <a href="#">Home</a>
+      <a href="#">TikTok Downloader</a>
+      <a href="#">Audio Extractor</a>
+      <a onclick="openContact()">Contact Us</a>
+    </div>
+    <div class="ft-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a onclick="openContact()">Support</a>
+    </div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 TikSabt. All rights reserved.</div>
+    <div class="ft-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a onclick="openContact()">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script>
+var BACKEND = "https://reelsaver-7q1r.onrender.com";
+var TIKWM   = "https://www.tikwm.com/api/";
+
+// Wake backend on page load (keeps Render server warm)
+window.addEventListener("load", function() {
+  fetch(BACKEND + "/health").catch(function(){});
+});
+
+var videoFormats = [];
+var videoTitle   = "tiktok-video";
+
+// Input events
+document.getElementById("urlInput").addEventListener("input", function() {
+  document.getElementById("clrBtn").classList.toggle("on", this.value.length > 0);
+});
+document.getElementById("urlInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") doFetch();
+});
+
+function doClear() {
+  document.getElementById("urlInput").value = "";
+  document.getElementById("urlInput").focus();
+  document.getElementById("clrBtn").classList.remove("on");
+  document.getElementById("result").innerHTML = "";
+  videoFormats = [];
+}
+
+function esc(s) {
+  return String(s || "")
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+// Loading messages — generic, professional
+var MSGS = ["Processing…","Fetching video…","Preparing download…","Almost ready…"];
+var msgTimer = null;
+function startMsgs(el) {
+  var i = 0; el.textContent = MSGS[0];
+  msgTimer = setInterval(function() { i=(i+1)%MSGS.length; el.textContent=MSGS[i]; }, 2000);
+}
+function stopMsgs() { clearInterval(msgTimer); msgTimer = null; }
+
+// Fetch with timeout — compatible with all browsers
+function fetchTimeout(url, opts, ms) {
+  var ctrl = new AbortController();
+  var tid  = setTimeout(function(){ ctrl.abort(); }, ms);
+  return fetch(url, Object.assign({}, opts, { signal: ctrl.signal }))
+    .then(function(r){ clearTimeout(tid); return r; })
+    .catch(function(e){ clearTimeout(tid); throw e; });
+}
+
+// Convert tikwm flat response into formats array
+function flatToFormats(v) {
+  var f = [];
+  if (v.hdplay) f.push({quality:"HD 1080p",sub:"No Watermark · Best Quality",ext:"mp4",url:v.hdplay,filesize:v.hd_size||0});
+  if (v.play && v.play !== v.hdplay) f.push({quality:"SD 720p",sub:"No Watermark",ext:"mp4",url:v.play,filesize:v.size||0});
+  if (v.wmplay) f.push({quality:"Original + Watermark",sub:"With TikTok Watermark",ext:"mp4",url:v.wmplay,filesize:v.wm_size||0});
+  var music = v.music || (v.music_info && v.music_info.play);
+  if (music) f.push({quality:"Audio MP3",sub:"Sound only",ext:"mp3",url:music,filesize:0});
+  return f;
+}
+
+// Main download fetch
+function doFetch() {
+  var url = document.getElementById("urlInput").value.trim();
+  var res = document.getElementById("result");
+  var btn = document.getElementById("goBtn");
+
+  if (!url) {
+    var f = document.getElementById("urlInput");
+    f.style.outline = "2px solid rgba(124,58,237,.5)";
+    f.focus();
+    setTimeout(function(){ f.style.outline=""; }, 1600);
+    return;
+  }
+  if (url.indexOf("tiktok.com") < 0 && url.indexOf("vm.tiktok") < 0 && url.indexOf("vt.tiktok") < 0) {
+    res.innerHTML = '<div class="err-card"><div class="err-ic">🚫</div><div class="err-t">TikTok links only</div><div class="err-m">Please paste a valid TikTok video URL.</div></div>';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "Processing…";
+  res.innerHTML = '<div class="loading-card"><div class="spin"></div><div class="ld-t">Fetching your video</div><div class="ld-s" id="ldSub">Processing…</div></div>';
+  var ldSub = document.getElementById("ldSub");
+  startMsgs(ldSub);
+
+  var resultData = null;
+  var errMsg = "";
+
+  // Step 1: tikwm direct (HD)
+  var fd = new FormData();
+  fd.append("url", url);
+  fd.append("hd", "1");
+
+  fetchTimeout(TIKWM, { method:"POST", body:fd }, 22000)
+  .then(function(r){ return r.json(); })
+  .then(function(j) {
+    if (j && j.code === 0 && j.data) {
+      var v = j.data;
+      var fmts = (v.formats && v.formats.length) ? v.formats : flatToFormats(v);
+      if (fmts.length) {
+        resultData = { title:v.title||"TikTok Video", cover:v.cover||"", author:v.author||{}, formats:fmts };
+      }
+    }
+  })
+  .catch(function(e){ errMsg = e.message; })
+
+  // Step 2: backend fallback
+  .then(function() {
+    if (resultData) return;
+    return fetchTimeout(BACKEND + "/api?url=" + encodeURIComponent(url), {}, 44000)
+      .then(function(r){ return r.json(); })
+      .then(function(j) {
+        if (j && j.code === 0 && j.data && j.data.formats && j.data.formats.length) {
+          resultData = j.data; errMsg = "";
+        } else { errMsg = (j && j.msg) || ""; }
+      })
+      .catch(function(e){ errMsg = e.message; });
+  })
+
+  // Step 3: tikwm SD fallback
+  .then(function() {
+    if (resultData) return;
+    var fd2 = new FormData();
+    fd2.append("url", url); fd2.append("hd","0");
+    return fetchTimeout(TIKWM, { method:"POST", body:fd2 }, 20000)
+      .then(function(r){ return r.json(); })
+      .then(function(j) {
+        if (j && j.code === 0 && j.data) {
+          var fmts = flatToFormats(j.data);
+          if (fmts.length) {
+            resultData = { title:j.data.title||"TikTok Video", cover:j.data.cover||"", author:j.data.author||{}, formats:fmts };
+            errMsg = "";
+          }
+        }
+      })
+      .catch(function(){});
+  })
+
+  .then(function() {
+    stopMsgs();
+    btn.disabled = false;
+    btn.textContent = "↓ Download Free";
+
+    if (!resultData || !resultData.formats || !resultData.formats.length) {
+      res.innerHTML =
+        '<div class="err-card">' +
+          '<div class="err-ic">⚠️</div>' +
+          '<div class="err-t">Unable to fetch video</div>' +
+          '<div class="err-m">Please make sure the video is public and the link is correct, then try again.</div>' +
+          '<button class="retry-btn" onclick="doFetch()">↺ Try again</button>' +
+        '</div>';
+      return;
+    }
+    renderResult(resultData);
+  });
+}
+
+// Render result
+function renderResult(v) {
+  var res = document.getElementById("result");
+  videoFormats = v.formats || [];
+  videoTitle = (v.title || "tiktok-video").replace(/[^a-zA-Z0-9 \-_]/g,"").trim().slice(0,60) || "tiktok-video";
+
+  var fmtHtml = videoFormats.map(function(f, i) {
+    var sz = "";
+    if (f.filesize > 1000000) sz = (f.filesize/1000000).toFixed(1) + " MB";
+    else if (f.filesize > 1000) sz = Math.round(f.filesize/1000) + " KB";
+    var best = i === 0 ? '<span class="best-tag">BEST</span>' : "";
+    var icon = f.ext === "mp3" ? "🎵" : "↓";
+    return '<button class="fmt-btn" onclick="startDownload(' + i + ',this)">' +
+      '<div class="fmt-left">' +
+        '<div class="fmt-ic">' + icon + '</div>' +
+        '<div>' +
+          '<div class="fmt-quality">' + esc(f.quality) + '</div>' +
+          '<div class="fmt-meta">' + esc(f.sub||"") + (sz?" · "+sz:"") + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:flex;align-items:center;gap:8px">' + best + '<span style="color:var(--mu);font-size:16px">›</span></div>' +
+    '</button>';
+  }).join("");
+
+  var thumb = v.cover
+    ? '<div class="thumb-w"><img class="thumb" src="' + esc(v.cover) + '" loading="lazy"/><div class="thumb-ov"></div><div class="ptag">🎵 TikTok</div></div>'
+    : "";
+  var author = (v.author && (v.author.nickname || v.author.unique_id)) || "";
+
+  res.innerHTML =
+    '<div class="res-card">' + thumb +
+      '<div class="res-body">' +
+        (author ? '<div class="res-up">@' + esc(author) + '</div>' : "") +
+        '<div class="res-title">' + esc(v.title||"TikTok Video") + '</div>' +
+        '<div class="fmt-lbl">Select quality to download</div>' +
+        '<div class="fmts">' + fmtHtml + '</div>' +
+        '<div class="dl-status" id="dlStatus"></div>' +
+      '</div>' +
+    '</div>';
+
+  setTimeout(function(){ res.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
+}
+
+// Download
+function startDownload(index, btn) {
+  var fmt = videoFormats[index];
+  if (!fmt) return;
+  var status = document.getElementById("dlStatus");
+  var orig = btn.innerHTML;
+  btn.innerHTML = '<div class="fmt-left"><div class="fmt-ic">⏳</div><div><div class="fmt-quality">Downloading…</div><div class="fmt-meta">Please wait</div></div></div>';
+  btn.style.opacity = "0.65";
+  document.querySelectorAll(".fmt-btn").forEach(function(b){ b.disabled = true; });
+  var filename = videoTitle + "." + fmt.ext;
+
+  fetchTimeout(fmt.url, {}, 90000)
+    .then(function(r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.blob();
+    })
+    .then(function(blob) {
+      var burl = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = burl; a.download = filename;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(burl); }, 30000);
+      if (status) { status.textContent = "✅ Download started — check your Downloads folder."; status.className = "dl-status show ok"; }
+    })
+    .catch(function() {
+      window.open(fmt.url, "_blank");
+      if (status) { status.textContent = "📥 Opened in new tab — long-press the video to Save."; status.className = "dl-status show warn"; }
+    })
+    .then(function() {
+      btn.innerHTML = orig; btn.style.opacity = "";
+      document.querySelectorAll(".fmt-btn").forEach(function(b){ b.disabled = false; });
+    });
+}
+
+// Contact modal
+function openContact() {
+  document.getElementById("contactModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+  setTimeout(function(){ document.getElementById("cName").focus(); }, 100);
+}
+function closeContact() {
+  document.getElementById("contactModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+function closeModalBg(e) {
+  if (e.target === document.getElementById("contactModal")) closeContact();
+}
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeContact();
+});
+
+function sendContact() {
+  var name  = document.getElementById("cName").value.trim();
+  var email = document.getElementById("cEmail").value.trim();
+  var msg   = document.getElementById("cMsg").value.trim();
+  var fmsg  = document.getElementById("formMsg");
+  var sbtn  = document.getElementById("sendBtn");
+
+  if (!name || !email || !msg) {
+    fmsg.textContent = "Please fill in all fields.";
+    fmsg.className = "form-msg err"; return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    fmsg.textContent = "Please enter a valid email address.";
+    fmsg.className = "form-msg err"; return;
+  }
+  if (msg.length < 10) {
+    fmsg.textContent = "Your message is too short.";
+    fmsg.className = "form-msg err"; return;
+  }
+
+  sbtn.disabled = true;
+  sbtn.textContent = "Sending…";
+  fmsg.className = "form-msg";
+
+  var _e = ["aiva",".afghan","@gm","ail.com"].join("");
+  var subject = encodeURIComponent("TikSabt: " + name);
+  var body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + msg);
+  var a = document.createElement("a");
+  a.href = "mailto:" + _e + "?subject=" + subject + "&body=" + body;
+  a.style.display = "none";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+
+  setTimeout(function() {
+    sbtn.disabled = false;
+    sbtn.textContent = "Send Message →";
+    fmsg.textContent = "✅ Message sent! We'll get back to you within 24 hours.";
+    fmsg.className = "form-msg ok";
+    document.getElementById("cName").value = "";
+    document.getElementById("cEmail").value = "";
+    document.getElementById("cMsg").value = "";
+  }, 800);
+}
+
+// FAQ accordion
+function faq(btn) {
+  var item = btn.closest(".fi");
+  var was  = item.classList.contains("open");
+  document.querySelectorAll(".fi.open").forEach(function(i){ i.classList.remove("open"); });
+  if (!was) item.classList.add("open");
+}
+</script>
+</body>
+</html>
